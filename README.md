@@ -8,7 +8,7 @@ The reference setup is the setup Redash use for their official images (for AWS &
 * `setup_external_metadb.sh` is the script that installs everything and creates the directories. The Redash server will be connected into the external server following configurations in local `.env`.
 * `setup.sh` is the script that installs everything and creates the directories. using this script, your Redash sever will store metadata in internal PostgresSQL.
 * `docker-compose.yml` is the Docker Compose setup we use.
-* `packer.json` is Packer configuration we use to create the Cloud images. Modification has not been applied for now.
+* `packer.json` is Packer configuration Redash use to create the Cloud images. Modification has not been applied for now.
 
 ## Getting started
 
