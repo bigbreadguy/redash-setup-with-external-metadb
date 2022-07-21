@@ -28,6 +28,14 @@ chmod +x setup_external_metadb.sh
 ./setup_external_metadb.sh
 ```
 
+### Schedule redis backup - not mandatory
+For production setups, this step is recommended.
+
+```
+chmod +x data/schedule_redis_backup.sh
+./data/schedule_redis_backup.sh
+```
+
 ## FAQ
 
 ### Can I use `setup.sh` in production?
