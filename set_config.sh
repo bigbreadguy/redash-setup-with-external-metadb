@@ -5,11 +5,11 @@ helpFunction()
 {
     echo ""
     echo "Usage: $0 -U DB_USERNAME -W DB_PASSWORD -H DB_HOSTNAME -P DB_PORT -N DB_NAME"
-    echo -e "\t-user Connect to the database as the user DB_USERNAME"
-    echo -e "\t-password The password for user DB_USERNAME to connect to the database"
-    echo -e "\t-hostname Specifies the host name of the machine on which the server is running"
-    echo -e "\t-port Specifies the TCP port or the local Unix-domain socket file extension on which the server is listening for connections"
-    echo -e "\t-name Specifies the name of the database to connect to"
+    echo -e "\t-DB_USERNAME Connect to the database as the user DB_USERNAME"
+    echo -e "\t-DB_PASSWORD The password for user DB_USERNAME to connect to the database"
+    echo -e "\t-DB_HOSTNAME Specifies the host name of the machine on which the server is running"
+    echo -e "\t-DB_PORT Specifies the TCP port or the local Unix-domain socket file extension on which the server is listening for connections"
+    echo -e "\t-DB_NAME Specifies the name of the database to connect to"
     exit 1 # Exit script after printing help
 }
 
