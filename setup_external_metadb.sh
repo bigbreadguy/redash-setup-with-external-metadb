@@ -28,8 +28,8 @@ create_directories() {
         sudo chown $USER:$USER $REDASH_BASE_PATH
     fi
 
-    if [[ ! -e $REDASH_BASE_PATH/postgres-data ]]; then
-        mkdir $REDASH_BASE_PATH/postgres-data
+    if [[ ! -e $REDASH_BASE_PATH/redis-backup ]]; then
+        mkdir $REDASH_BASE_PATH/redis-backup
     fi
 }
 
@@ -52,6 +52,7 @@ create_config() {
     echo "PYTHONUNBUFFERED=0" >> $REDASH_BASE_PATH/env
     echo "REDASH_LOG_LEVEL=INFO" >> $REDASH_BASE_PATH/env
     echo "REDASH_REDIS_URL=redis://redis:6379/0" >> $REDASH_BASE_PATH/env
+    echo "REDASH_ADDITIONAL_QUERY_RUNNERS=redash.query_runner.python" >> $REDASH_BASE_PATH/env
     echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> $REDASH_BASE_PATH/env
     echo "REDASH_COOKIE_SECRET=$REDASH_COOKIE_SECRET" >> $REDASH_BASE_PATH/env
     echo "REDASH_SECRET_KEY=$REDASH_SECRET_KEY" >> $REDASH_BASE_PATH/env
@@ -73,6 +74,13 @@ setup_compose() {
     
     # Edit redash-service not to depend on service postgres in docker-compose
     sed "/- postgres/d" /opt/redash/docker-compose.yml
+    
+    # Edit redis to bind volume /data to host file system directory
+    export volumes="volumes:"
+    export bind_directory="- /opt/redash/redis-backup:/data"
+    sed -i "38 i \    ${volumes}" /opt/redash/docker-compose.yml
+    sed -i "39 i \      ${bind_directory}" docker-compose.yml
+    
     # Create and start containers except postgres
     sudo docker-compose run --rm server create_db
     sudo docker-compose up -d server scheduler scheduled_worker adhoc_worker redis nginx
