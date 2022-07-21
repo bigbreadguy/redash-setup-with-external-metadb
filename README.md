@@ -19,7 +19,7 @@ chmod +x set_config.sh
 ./set_config.sh -U DB_USERNAME -W DB_PASSWORD -H DB_HOSTNAME -P DB_PORT -N DB_NAME
 ```
 
-replace placeholders(all capital) and pass the parameters as required. *It is highly recommended to save .env file after the configuration, you do not want to lose COOKIE_SECRET and SECRET_KEY.*
+replace placeholders(all capital) and pass the parameters as required. **It is highly recommended to save .env file after the configuration, you do not want to lose COOKIE_SECRET and SECRET_KEY.**
 
 ### Redash setup
 
