@@ -33,8 +33,11 @@ For production setups, this step is recommended.
 
 ```
 chmod +x data/schedule_redis_backup.sh
-./data/schedule_redis_backup.sh
+./data/schedule_redis_backup.sh -C CRON_EXPRESSION
 ```
+
+A CRON expression is a string that represents a set of times, as a schedule to execute the routine.
+[Check this out](https://en.wikipedia.org/wiki/Cron#CRON_expression)
 
 ## FAQ
 
