@@ -4,7 +4,7 @@ helpFunction()
 {
     echo ""
     echo "Usage: $0 -C CRON_EXPRESSION"
-    echo -e "\t-CRON_EXPRESSION specifies routine schedule for the operation"
+    echo -e "\t-C Specifies routine schedule for the operation"
     exit 1 # Exit script after printing help
 }
 
