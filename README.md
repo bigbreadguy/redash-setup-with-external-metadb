@@ -28,6 +28,22 @@ chmod +x setup_external_metadb.sh
 ./setup_external_metadb.sh
 ```
 
+### Schedule logrotate - highly recommended
+Sometimes docker log files could take up a large amount of disk space. You could setup a cronjob to purge these log files regularly.
+
+```
+vi /etc/logrotate.d/docker
+
+# and copy-paste this
+/var/lib/docker/containers/*/*.log {
+  rotate 3
+  daily
+  compress
+  missingok
+  copytruncate
+}
+```
+
 ### Schedule redis backup - not mandatory
 For production setups, this step is recommended.
 
